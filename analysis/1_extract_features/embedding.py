@@ -120,7 +120,7 @@ class FeatureExtractor():
             im = Image.open(path)
             
             if self.cohort!='images':
-                im = RGBA2RGB(im)
+                # im = RGBA2RGB(im)
                 
                 # crop to sketch only (reduce white space)
                 arr = np.asarray(im)
