@@ -149,7 +149,7 @@ class FeatureExtractor():
             if use_cuda:
                 im = im.cuda(self.cuda_device)
 
-            print 'size of tensor = {}'.format(np.size(im))
+            print('size of tensor = {}').format(np.size(im))
             return im        
         
         def load_vgg19(layer_index=self.layer,use_cuda=True,cuda_device=self.cuda_device):
