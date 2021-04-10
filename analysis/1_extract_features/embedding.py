@@ -186,11 +186,9 @@ class FeatureExtractor():
         generator = generator(self.paths,imsize=self.imsize,use_cuda=self.use_cuda, dataset=self.dataset)
         
         # initialize sketch and label matrices
-        Features = []
-        Labels = []
-        Ages = []
-        Sessions = []
-        Conditions = []
+        SubIDs = []
+        Categories = []
+        Timepoints = []
         
         n = 0
         quit = False 
@@ -215,8 +213,8 @@ class FeatureExtractor():
                     try:
                         sketch, subid, category, timepoint = generator.next()
                         sketch_batch[b] = sketch 
-                        subid_batch.append(label)
-                        category_batch.append(age)
+                        subid_batch.append(subid)
+                        category_batch.append(category)
                         timepoint_batch.append(timepoint)
                     except StopIteration:
                         quit = True
