@@ -217,7 +217,7 @@ class FeatureExtractor():
                         sketch_batch[b] = sketch 
                         subid_batch.append(label)
                         category_batch.append(age)
-                        timepoint_batch.append(session)
+                        timepoint_batch.append(timepoint)
                     except StopIteration:
                         quit = True
                         print('stopped!')
@@ -248,5 +248,5 @@ class FeatureExtractor():
         SubIDs = np.array([item for sublist in SubIDs for item in sublist])
         Categories = np.array([item for sublist in Categories for item in sublist])
         Timepoints = np.array([item for sublist in Timepoints for item in sublist])
-    return Features, SubIDs, Categories, Timepoints
+        return Features, SubIDs, Categories, Timepoints
     
