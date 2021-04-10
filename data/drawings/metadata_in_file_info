@@ -1,0 +1,12 @@
+Bd = subject name code (can be matched to the excel file).
+July2018 = text indicating the month and year the child was treated.
+M = gender (M or F).
+Flower = Object drawn (options are: Flower, House, Face, Person)
+PO1 = timepoint that data was collected 
+options include: 
+'Pre' = preoperatively
+'PO1' = Postop1 or after surgery in first eye (within a week of first surgery)
+'PO2' = Postop2 or after surgery in second eye (typically within 2 weeks for first eye surgery)
+'FU1' = Followup1, typically about a month after first eye surgery
+'FU2' = Followup2, typically between 4-6 months after first eye surgery
+'FU3' = Followup3, typically between 9-12 months after first eye surgery
