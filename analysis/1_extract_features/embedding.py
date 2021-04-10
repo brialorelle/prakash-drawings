@@ -148,6 +148,8 @@ class FeatureExtractor():
             # im = im.unsqueeze(0)
             if use_cuda:
                 im = im.cuda(self.cuda_device)
+
+            print np.size(im)
             return im        
         
         def load_vgg19(layer_index=self.layer,use_cuda=True,cuda_device=self.cuda_device):
