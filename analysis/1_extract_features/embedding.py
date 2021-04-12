@@ -113,8 +113,12 @@ class FeatureExtractor():
             """
             image.load()  # needed for split()
             background = Image.new('RGB', image.size, color)
-            background.paste(image, mask=image.split()[3])  # 3 is the alpha channel
-            return background
+            try:
+                background.paste(image, mask=image.split()[3])  # 3 is the alpha channel
+                out=background
+            except:
+                out=image
+            return out
 
         def load_image(path, imsize=224, padding=self.padding, volatile=True, use_cuda=False):
             im = Image.open(path)
