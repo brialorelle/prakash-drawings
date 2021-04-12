@@ -123,26 +123,28 @@ class FeatureExtractor():
         def load_image(path, imsize=224, padding=self.padding, volatile=True, use_cuda=False):
             im = Image.open(path)
             im = RGBA2RGB(im) # gets rid of alpha channel
-            
-            if self.cohort!='images':
-                im = im.convert('1')  # convert to b&ww
-                
-                # crop to sketch only (reduce white space)
-                arr = np.asarray(im)
-                w,h,d = np.where(arr<255) # where the image is not white
-                if len(h)==0:
-                    print(path)  
-                try:
-                    xlb = min(h)
-                    xub = max(h)
-                    ylb = min(w)
-                    yub = max(w)
-                    lb = min([xlb,ylb])
-                    ub = max([xub,yub])            
-                    im = im.crop((lb, lb, ub, ub))
-                except ValueError:
-                    print('Blank image {}'.format(path))
-                    pass
+
+            # convert to thresholded black and white
+            thresh = 200
+            fn = lambda x : 255 if x > thresh else 0
+            r = im.convert('L').point(fn, mode='1')
+
+            # crop to sketch only (reduce white space)
+            arr = np.asarray(im)
+            w,h,d = np.where(arr<255) # where the image is not white
+            if len(h)==0:
+                print(path)  
+            try:
+                xlb = min(h)
+                xub = max(h)
+                ylb = min(w)
+                yub = max(w)
+                lb = min([xlb,ylb])
+                ub = max([xub,yub])            
+                im = im.crop((lb, lb, ub, ub))
+            except ValueError:
+                print('Blank image {}'.format(path))
+                pass
 
             loader = transforms.Compose([
                 transforms.Pad(padding),                
@@ -150,11 +152,8 @@ class FeatureExtractor():
                 transforms.ToTensor()])
 
             im = Variable(loader(im), volatile=volatile)
-            # im = im.unsqueeze(0)
             if use_cuda:
                 im = im.cuda(self.cuda_device)
-
-            print('size of tensor = {}').format(im.size())
             return im        
         
         def load_vgg19(layer_index=self.layer,use_cuda=True,cuda_device=self.cuda_device):
