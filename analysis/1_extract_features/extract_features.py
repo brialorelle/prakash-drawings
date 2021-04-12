@@ -64,8 +64,8 @@ def save_features(Features, Y, layer_num, cohort,spatial_avg,dataset):
     if not os.path.exists('./features'):
         os.makedirs('./features')
     layers = ['P1','P2','P3','P4','P5','FC6','FC7']
-    np.save('/home/bria/prakash-drawings/data/{}/features/FEATURES_{}_{}_Spatial_{}.npy'.format(dataset,layers[int(layer_num)], cohort,spatial_avg), Features)
-    Y.to_csv('/home/bria/prakash-drawings/data/{}/features/METADATA_{}.csv'.format(dataset,cohort))
+    np.save('/home/bria/prakash-drawings/data/features/FEATURES_{}_{}_Spatial_{}.npy'.format(dataset,layers[int(layer_num)],spatial_avg), Features)
+    Y.to_csv('/home/bria/prakash-drawings/data/features/METADATA_{}.csv'.format(dataset))
     return layers[int(layer_num)]
 
 ## remove data where you dont have age information
