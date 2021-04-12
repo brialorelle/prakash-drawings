@@ -245,8 +245,8 @@ class FeatureExtractor():
                     Features = np.vstack((Features,sketch_batch))
 
                 SubIDs.append(subid_batch)
-                Categories.append(age_batch)
-                Timepoints.append(category_batch)
+                Categories.append(category_batch)
+                Timepoints.append(timepoint_batch)
 
                 if n == self.num_sketches//batch_size + 1:
                     break
