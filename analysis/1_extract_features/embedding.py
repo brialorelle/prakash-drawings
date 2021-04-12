@@ -151,7 +151,7 @@ class FeatureExtractor():
                 transforms.Scale(imsize),
                 transforms.ToTensor()])
 
-            im = Variable(loader(im), volatile=volatile)
+            im = Variable(loader(im))
             if use_cuda:
                 im = im.cuda(self.cuda_device)
             return im        
@@ -192,6 +192,7 @@ class FeatureExtractor():
         generator = generator(self.paths,imsize=self.imsize,use_cuda=self.use_cuda, dataset=self.dataset)
         
         # initialize sketch and label matrices
+        Features = []
         SubIDs = []
         Categories = []
         Timepoints = []
