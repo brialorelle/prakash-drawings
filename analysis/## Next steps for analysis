@@ -1,0 +1,7 @@
+## Next steps for analysis
+
+1. Double check image preprocesing -- bria
+2. Double check data structures / extra metadata for dataset (sharon)
+3. Decide on timepoints and how we're collapsing them
+4. Sanity check whether we can do classificaitons on small dataset
+5. Think about ways to quantify individual variability in classifications

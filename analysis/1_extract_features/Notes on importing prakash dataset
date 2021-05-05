@@ -1,0 +1,4 @@
+Notes on importing prakash dataset:
+
+So far draiwngs we've used have been transparent pngs -- these are not, and they have irregular sizes. Currently having trouble improrting them.
+Need to debug in a jupyter notebook not on server to make sure we're inputting the correct data.
